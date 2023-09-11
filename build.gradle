@@ -19,10 +19,10 @@ version = mod_version
 group = 'com.teampotato.sparsestructuresreforged'
 archivesBaseName = 'sparsestructuresreforged'
 
-java.toolchain.languageVersion.set(JavaLanguageVersion.of(8))
+java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
 
 minecraft {
-    mappings channel: 'parchment', version: '2022.03.06-1.16.5'
+    mappings channel: 'parchment', version: '2022.11.27-1.19.2'
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
     runs {
         client {
@@ -67,7 +67,7 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.5-36.2.39'
+    minecraft 'net.minecraftforge:forge:1.19.2-43.2.21'
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 

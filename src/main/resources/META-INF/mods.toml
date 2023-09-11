@@ -1,6 +1,6 @@
 modLoader="javafml"
 loaderVersion="[36,)"
-license="LGPL-v3"
+license="MIT"
 
 [[mods]]
 modId="sparsestructuresreforged"
