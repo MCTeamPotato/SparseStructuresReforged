@@ -17,7 +17,7 @@ apply plugin: 'org.spongepowered.mixin'
 
 version = mod_version
 group = 'com.teampotato.sparsestructuresreforged'
-archivesBaseName = 'sparsestructuresreforged'
+archivesBaseName = 'ssr'
 
 java.toolchain.languageVersion.set(JavaLanguageVersion.of(8))
 
