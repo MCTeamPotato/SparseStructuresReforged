@@ -18,10 +18,6 @@ loom {
     mixin.defaultRefmapName.set("sparsestructuresreforged.refmap.json")
 }
 
-repositories {
-
-}
-
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings loom.officialMojangMappings()

@@ -2,6 +2,7 @@
   "required": true,
   "package": "com.teampotato.sparsestructuresreforged.mixin",
   "compatibilityLevel": "JAVA_8",
+  "plugin": "com.teampotato.sparsestructuresreforged.SSRMixinPlugin",
   "minVersion": "0.8",
   "injectors": {
     "defaultRequire": 1

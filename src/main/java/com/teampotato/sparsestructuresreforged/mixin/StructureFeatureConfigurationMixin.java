@@ -1,6 +1,6 @@
 package com.teampotato.sparsestructuresreforged.mixin;
 
-import com.teampotato.sparsestructuresreforged.SparseStructuresReforged;
+import com.teampotato.sparsestructuresreforged.SSRMixinPlugin;
 import net.minecraft.world.level.levelgen.feature.configurations.StructureFeatureConfiguration;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -18,7 +18,7 @@ public abstract class StructureFeatureConfigurationMixin {
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void onInit(int i, int j, int k, CallbackInfo ci) {
-        this.spacing = (int) ((1 + SparseStructuresReforged.extraSpacingPercentage.get()) * spacing);
-        this.separation = (int) ((1 + SparseStructuresReforged.extraSeparationPercentage.get()) * separation);
+        this.spacing = (int) ((1 + SSRMixinPlugin.extraSpacingPercentage) * spacing);
+        this.separation = (int) ((1 + SSRMixinPlugin.extraSeparationPercentage) * separation);
     }
 }
