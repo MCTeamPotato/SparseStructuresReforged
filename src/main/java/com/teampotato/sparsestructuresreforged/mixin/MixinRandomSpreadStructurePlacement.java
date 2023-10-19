@@ -24,7 +24,8 @@ public abstract class MixinRandomSpreadStructurePlacement {
     private void onInit(Vec3i p_227000_, StructurePlacement.FrequencyReductionMethod p_227001_, float p_227002_, int p_227003_, Optional p_227004_, int p_227005_, int p_227006_, RandomSpreadType p_227007_, CallbackInfo ci) {
         int newSpacing = (int) ((1.0D + SSRMixinPlugin.extraSpacingPercentage) * spacing);
         int newSeparation = (int) ((1.0D + SSRMixinPlugin.extraSeparationPercentage) * separation);
-        this.spacing = newSpacing == 0 ? 2 : newSpacing;
-        this.separation = newSeparation == 0 ? 1 : newSeparation;
+        if (newSeparation >= newSpacing) newSpacing = newSeparation + 1;
+        this.spacing = newSpacing <= 0 ? 2 : newSpacing;
+        this.separation = newSeparation <= 0 ? 1 : newSeparation;
     }
 }
