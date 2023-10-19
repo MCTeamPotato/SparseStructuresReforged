@@ -22,7 +22,9 @@ public abstract class MixinRandomSpreadStructurePlacement {
 
     @Inject(method = "<init>(Lnet/minecraft/core/Vec3i;Lnet/minecraft/world/level/levelgen/structure/placement/StructurePlacement$FrequencyReductionMethod;FILjava/util/Optional;IILnet/minecraft/world/level/levelgen/structure/placement/RandomSpreadType;)V", at = @At("TAIL"))
     private void onInit(Vec3i p_227000_, StructurePlacement.FrequencyReductionMethod p_227001_, float p_227002_, int p_227003_, Optional p_227004_, int p_227005_, int p_227006_, RandomSpreadType p_227007_, CallbackInfo ci) {
-        this.spacing = (int) ((1.0D + SSRMixinPlugin.extraSpacingPercentage) * spacing);
-        this.separation = (int) ((1.0D + SSRMixinPlugin.extraSeparationPercentage) * separation);
+        int newSpacing = (int) ((1.0D + SSRMixinPlugin.extraSpacingPercentage) * spacing);
+        int newSeparation = (int) ((1.0D + SSRMixinPlugin.extraSeparationPercentage) * separation);
+        this.spacing = newSpacing == 0 ? 2 : newSpacing;
+        this.separation = newSeparation == 0 ? 1 : newSeparation;
     }
 }
