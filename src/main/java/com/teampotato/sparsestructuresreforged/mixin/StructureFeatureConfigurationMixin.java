@@ -18,7 +18,9 @@ public abstract class StructureFeatureConfigurationMixin {
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void onInit(int i, int j, int k, CallbackInfo ci) {
-        this.spacing = (int) ((1.0D + SSRMixinPlugin.extraSpacingPercentage) * spacing);
-        this.separation = (int) ((1.0D + SSRMixinPlugin.extraSeparationPercentage) * separation);
+        int newSpacing = (int) ((1.0D + SSRMixinPlugin.extraSpacingPercentage) * spacing);
+        int newSeparation = (int) ((1.0D + SSRMixinPlugin.extraSeparationPercentage) * separation);
+        this.spacing = newSpacing == 0 ? 2 : newSpacing;
+        this.separation = newSeparation == 0 ? 1 : newSeparation;
     }
 }
