@@ -20,7 +20,8 @@ public abstract class StructureFeatureConfigurationMixin {
     private void onInit(int i, int j, int k, CallbackInfo ci) {
         int newSpacing = (int) ((1.0D + SSRMixinPlugin.extraSpacingPercentage) * spacing);
         int newSeparation = (int) ((1.0D + SSRMixinPlugin.extraSeparationPercentage) * separation);
-        this.spacing = newSpacing == 0 ? 2 : newSpacing;
-        this.separation = newSeparation == 0 ? 1 : newSeparation;
+        if (newSeparation >= newSpacing) newSpacing = newSeparation + 1;
+        this.spacing = newSpacing <= 0 ? 2 : newSpacing;
+        this.separation = newSeparation <= 0 ? 1 : newSeparation;
     }
 }
