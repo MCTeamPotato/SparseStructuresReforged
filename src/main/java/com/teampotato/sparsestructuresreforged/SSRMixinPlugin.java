@@ -14,6 +14,7 @@ import java.util.Set;
 
 public class SSRMixinPlugin implements IMixinConfigPlugin {
     static boolean initFailed;
+    static Exception exception;
     public static double extraSpacingPercentage, extraSeparationPercentage;
 
     public SSRMixinPlugin() {
@@ -26,6 +27,7 @@ public class SSRMixinPlugin implements IMixinConfigPlugin {
                 fileWriter.close();
             } catch (Exception e) {
                 initFailed = true;
+                exception = e;
             }
         }
 
