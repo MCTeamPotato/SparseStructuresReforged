@@ -2,7 +2,7 @@ package com.teampotato.sparsestructuresreforged;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import net.minecraftforge.fml.loading.FMLLoader;
+import net.neoforged.fml.loading.FMLLoader;
 import org.jetbrains.annotations.NotNull;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
@@ -32,7 +32,7 @@ public class SSRMixinPlugin implements IMixinConfigPlugin {
         }
 
         try (BufferedReader reader = new BufferedReader(new FileReader(configFile))) {
-            JsonObject jsonObject = new JsonParser().parse(reader).getAsJsonObject();
+            JsonObject jsonObject = JsonParser.parseReader(reader).getAsJsonObject();
             extraSpacingPercentage = jsonObject.get("extraSpacingPercentage").getAsDouble();
             extraSeparationPercentage = jsonObject.get("extraSeparationPercentage").getAsDouble();
         } catch (Exception e) {

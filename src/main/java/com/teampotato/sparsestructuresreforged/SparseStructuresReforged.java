@@ -1,10 +1,8 @@
 package com.teampotato.sparsestructuresreforged;
 
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.fml.common.Mod;
 
-@Mod("sparsestructuresreforged")
+@Mod(SparseStructuresReforged.MOD_ID)
 public class SparseStructuresReforged {
-    public SparseStructuresReforged() throws Exception {
-        if (SSRMixinPlugin.initFailed) throw SSRMixinPlugin.exception;
-    }
+    public static final String MOD_ID = "sparsestructuresreforged";
 }

@@ -1,12 +1,15 @@
-modLoader="javafml"
-loaderVersion="[36,)"
-license="MIT"
+modLoader = "javafml"
+loaderVersion = "[1,)"
+license = "MIT"
 
 [[mods]]
-modId="sparsestructuresreforged"
-version="${file.jarVersion}"
-displayName="SparseStructuresReforged"
-authors="TeamPotato"
-description='''
-A Minecraft mod.
+modId = "sparsestructuresreforged"
+version = "${version}"
+displayName = "SparseStructuresReforged"
+authors = "TeamPotato"
+description = '''
+A Minecraft Mod.
 '''
+
+[[mixins]]
+config = "sparsestructuresreforged.mixins.json"
