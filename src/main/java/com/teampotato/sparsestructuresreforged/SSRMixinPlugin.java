@@ -14,9 +14,10 @@ import java.util.Set;
 
 public class SSRMixinPlugin implements IMixinConfigPlugin {
     static boolean initFailed;
-    static Throwable exception;
+    static Throwable exceptionOnWriteFile, exceptionOnReadFile;
     public static double extraSpacingPercentage, extraSeparationPercentage;
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     public SSRMixinPlugin() {
         File config = new File(FMLLoader.getGamePath().toFile(), "config");
         config.mkdirs();
@@ -27,7 +28,7 @@ public class SSRMixinPlugin implements IMixinConfigPlugin {
                 fileWriter.close();
             } catch (Exception e) {
                 initFailed = true;
-                exception = e;
+                exceptionOnWriteFile = e;
             }
         }
 
@@ -37,6 +38,7 @@ public class SSRMixinPlugin implements IMixinConfigPlugin {
             extraSeparationPercentage = jsonObject.get("extraSeparationPercentage").getAsDouble();
         } catch (Exception e) {
             initFailed = true;
+            exceptionOnReadFile = e;
         }
     }
 
