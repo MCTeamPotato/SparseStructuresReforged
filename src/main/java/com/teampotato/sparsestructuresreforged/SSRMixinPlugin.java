@@ -21,7 +21,7 @@ public class SSRMixinPlugin implements IMixinConfigPlugin {
     public SSRMixinPlugin() {
         File config = new File(FMLLoader.getGamePath().toFile(), "config");
         config.mkdirs();
-        File configFile = new File(config, "sparestructuresreforged.json");
+        File configFile = new File(config, "sparsetructuresreforged.json");
         if (!configFile.exists()) {
             try {
                 FileWriter fileWriter = writeFile(configFile);
