@@ -24,9 +24,10 @@ import java.util.Map;
 public abstract class RegistryDataLoaderMixin {
     @Inject(method = "loadRegistryContents", at = @At(value = "INVOKE", remap = false, target = "Lcom/mojang/serialization/Decoder;parse(Lcom/mojang/serialization/DynamicOps;Ljava/lang/Object;)Lcom/mojang/serialization/DataResult;"), locals = LocalCapture.CAPTURE_FAILEXCEPTION)
     private static <E> void ssr$init(RegistryOps.RegistryInfoLookup lookup, ResourceManager manager, ResourceKey<? extends Registry<E>> registryKey, WritableRegistry<E> registry, Decoder<E> decoder, Map<ResourceKey<?>, Exception> exceptions, CallbackInfo ci, String string, FileToIdConverter converter, RegistryOps<JsonElement> registryOps, Iterator<Map.Entry<ResourceLocation, Resource>> iterator, Map.Entry<ResourceLocation, Resource> entry, ResourceLocation resourcelocation, ResourceKey<E> resourceKey, Resource resource, Reader reader, JsonElement jsonElement) {
-        JsonObject jsonObject = jsonElement.getAsJsonObject();
-        JsonObject placement = jsonObject.getAsJsonObject("placement");
-        if (string.equals("worldgen/structure_set") && !placement.get("type").getAsString().equals("minecraft:concentric_rings")) {
+        if (string.equals("worldgen/structure_set")) {
+            JsonObject jsonObject = jsonElement.getAsJsonObject();
+            JsonObject placement = jsonObject.getAsJsonObject("placement");
+            if (placement.get("type").getAsString().equals("minecraft:concentric_rings")) return;
             double factor = SparseStructures.config.customSpreadFactors.stream().filter(s -> {
                 if (s == null) return false;
                 String structure_set = resourceKey.location().toString();
